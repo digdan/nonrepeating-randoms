@@ -34,6 +34,6 @@ This will get the 5th position of the shuffled set, which should be 92;
 
 ### Roadmap
 
-[X] Create base functions
-[X] Make random sets seeded
-[ ] Make random sets iterable
+- [x] Create base functions
+- [x] Make random sets seeded
+- [ ] Make random sets iterable
