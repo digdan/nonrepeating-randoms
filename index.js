@@ -36,4 +36,4 @@ const nrr = (range, seedString) => {
   };
 };
 
-console.log("nrr", nrr(75000, "test")(100));
+export default nrr'

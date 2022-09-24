@@ -1,1 +1,0 @@
-docker run --rm -it --name non-repeating-random -v %cd%:/home/app -w /home/app -u node node:latest /bin/bash
