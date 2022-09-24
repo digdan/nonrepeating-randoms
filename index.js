@@ -36,4 +36,4 @@ const nrr = (range, seedString) => {
   };
 };
 
-export default nrr'
+export default nrr;
