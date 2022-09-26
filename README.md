@@ -10,7 +10,7 @@ Here's why:
 
 - You may wish to iterate a set of data without being detected ( data scraping ).
 - You may want to gather a reproducable and non-sequential sample from a dataset.
-- You may want to shuffle a dataste for a gaming mechanic
+- You may want to shuffle a dataset for a gaming mechanic
 
 Of course, you may have your own reasons and needs to generate a non-sequential unique set of numbers. Shoot me an email if you find a new use for this library. started.
 
