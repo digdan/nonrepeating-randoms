@@ -20,20 +20,19 @@ Of course, you may have your own reasons and needs to generate a non-sequential 
 
 To use this library you can import it as a generic function.
 
-`import nrr from 'non-repeating-random';`
+`import { pr_sequence, pr_sequence_array } from 'non-repeating-random';`
+`const nsArray = pr_sequence_array(1, 100, "test");`
 
-Then you can use the function go getnerate the set of numbers you need based on a seed.
+This will generate an array that has the psuedo random sequence pre-built.
 
-`const nsrand = nrr(100, "test");`
+`const seq = pr_sequence(1, 100, "test");`
 
-This will generate a function that you can iterate through by sending it the index as an argument.
-
-`const fifth = nsrand(5); console.log('fifth', fifth);`
-
-This will get the 5th position of the shuffled set, which should be 92;
+This will create an iteratable object. Each iteration will generate a non-sequencial non-repeating number.
 
 ### Roadmap
 
 - [x] Create base functions
 - [x] Make random sets seeded
-- [ ] Make random sets iterable
+- [x] Make random sets iterable
+- [x] Use purely mathmatical solution
+- [ ] Finish roadmap

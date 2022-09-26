@@ -25,15 +25,38 @@ const sfc32 = (a, b, c, d) => {
   return (t >>> 0) / 4294967296;
 };
 
-const nrr = (range, seedString) => {
-  const seed = prng_seed(seedString);
-  let nums = new Set();
-  while (nums.size < range) {
-    nums.add(Math.floor(sfc32(seed(), seed(), seed(), seed()) * range + 1));
+function* pr_sequence(rmin, rmax, seedString = null) {
+  if (seedString === null) {
+    seedString = Math.random().toString();
   }
-  return (index) => {
-    return [...nums][index];
-  };
+  const diff = rmax - rmin;
+  const seed = prng_seed(seedString);
+  if (diff < 4) {
+    throw "Range must be larger than 4";
+  }
+
+  const modu = 2 ** diff.toString(2).length;
+  const a =
+    Math.round(sfc32(seed(), seed(), seed(), seed()) * (modu >> 2) - 1) * 4 + 1;
+  const c =
+    Math.round(sfc32(seed(), seed(), seed(), seed()) * modu) - 3 + 3 || 1;
+  const offset = rmin;
+  const seqlength = diff + 1;
+
+  let x = 1;
+  for (let i = 0; i < seqlength; i++) {
+    while (true) {
+      x = (x * a + c) % modu;
+      if (x < seqlength) {
+        yield x + offset;
+        break;
+      }
+    }
+  }
+}
+
+const pr_sequence_array = (rmin, rmax, seedString = null) => {
+  return Array.from(pr_sequence(rmin, rmax, seedString));
 };
 
-export default nrr;
+export { pr_sequence, pr_sequence_array };
